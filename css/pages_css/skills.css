@@ -1,0 +1,228 @@
+/* portfolio-project/css/pages_css/skills.css */
+
+/* ------------------------- */
+/* -- PAGE TITLE SECTION (reused from about.css if identical, or customize) --- */
+/* ------------------------- */
+/* .page-title-section { ... } */
+/* .page-subtitle { ... } */
+/* Assuming these are similar to about.css and covered by main.css or component CSS if general enough. */
+/* If specific styling is needed for the skills page title, add it here. */
+
+
+/* ------------------------------------ */
+/* ----- COMMON SKILLS PAGE SECTION STYLING ----- */
+/* ------------------------------------ */
+.skills-page-section {
+    padding-top: var(--spacing-xl); /* Slightly less top padding than about sections */
+    padding-bottom: var(--spacing-xl);
+}
+
+.skills-page-section.bg-alt {
+    background-color: var(--color-background-alt);
+}
+
+.skills-page-section .section-title { /* H2 titles within skills sections */
+    font-size: var(--fs-xxxl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+}
+.skills-page-section .section-title::after { /* Optional: decorative underline */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
+}
+
+/* ------------------------- */
+/* --- SKILLS OVERVIEW --- */
+/* ------------------------- */
+.skills-overview {
+    font-size: var(--fs-lg);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-xl); /* Space before the first skills grid */
+}
+
+/* ------------------------- */
+/* ----- SKILLS GRID ----- */
+/* ------------------------- */
+.skills-grid {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */ /* For skill items with bars */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider for items with bars */
+    gap: var(--spacing-xl);
+}
+
+/* Individual .skill-item styling (for items with skill bars) */
+.skill-item {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+html[data-theme="dark"] .skill-item {
+    background-color: var(--color-background-alt);
+    /* border: 1px solid var(--color-border); */ /* Optional subtle border */
+}
+
+.skill-icon-large {
+    width: 60px; /* Adjust size as needed */
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    object-fit: contain; /* Ensure icon isn't distorted */
+}
+
+.skill-name { /* h3 */
+    font-size: var(--fs-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.skill-level-text { /* "Proficiency: Advanced" */
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+}
+
+/* Skill bar container and bar styling will be in skill-bars.css */
+
+.skill-description { /* p below skill bar */
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-top: var(--spacing-md); /* Space above description after bar */
+    flex-grow: 1; /* Pushes description down if card heights vary due to content */
+}
+
+
+/* Styling for icon-based skill items (e.g., Tools section) */
+.icon-based-skills { /* A different grid for tool-like skills */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.skill-item-icon-based {
+    background-color: transparent; /* Or a very subtle background */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* transition: background-color var(--transition-short); */
+}
+
+/* .skill-item-icon-based:hover {
+    background-color: var(--color-background-alt);
+}
+html[data-theme="dark"] .skill-item-icon-based:hover {
+    background-color: var(--color-background);
+} */
+
+.skill-icon-medium {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-sm);
+    object-fit: contain;
+}
+
+.skill-item-icon-based .skill-name {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--spacing-xs);
+}
+.skill-item-icon-based .skill-description {
+    font-size: var(--fs-sm);
+    margin-top: 0;
+}
+
+
+/* ------------------------- */
+/* ----- SOFT SKILLS ----- */
+/* ------------------------- */
+.soft-skills-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px; /* Control width of the list */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Two columns on wider screens */
+    gap: var(--spacing-sm) var(--spacing-lg);
+}
+
+.soft-skills-list li {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-xs) 0;
+    display: flex;
+    align-items: center;
+}
+
+.list-icon { /* For checkmark icons etc. */
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm);
+    color: var(--color-success); /* If using font icon or SVG that inherits color */
+    /* For SVG images, ensure they are colored appropriately or use filter */
+    /* filter: invert(56%) sepia(94%) saturate(437%) hue-rotate(83deg) brightness(94%) contrast(88%); */ /* Example green filter */
+}
+
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES ----- */
+/* ------------------------- */
+@media (max-width: 768px) {
+    .skills-page-section .section-title {
+        font-size: var(--fs-xxl);
+    }
+    .skills-overview {
+        font-size: var(--fs-base);
+    }
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for smaller screens */
+    }
+    .icon-based-skills {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .skill-name {
+        font-size: var(--fs-lg);
+    }
+    .soft-skills-list {
+        grid-template-columns: 1fr; /* Single column for soft skills on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-page-section .section-title {
+        font-size: var(--fs-xl);
+    }
+    .skills-grid, .icon-based-skills {
+        grid-template-columns: 1fr; /* Stack all skill items */
+    }
+    .skill-icon-large {
+        width: 50px;
+        height: 50px;
+    }
+    .skill-icon-medium {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,107 @@
+/* portfolio-project/css/components/intro-animation.css */
+
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-background); /* Match body background */
+    z-index: var(--z-index-modal) + 100; /* Ensure it's on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out 0.5s, visibility 0s linear 1s; /* Fade out after sparks */
+}
+
+#intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Allow interaction with content below after hidden */
+}
+
+.intro-content {
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Above sparks if they are in the same container but styled differently */
+}
+
+/* Optional: Styling for intro logo or name if you add them */
+.intro-logo {
+    max-width: 150px;
+    margin-bottom: var(--spacing-md);
+    opacity: 0;
+    animation: fadeInLogo 1s ease-out 2s forwards; /* Fade in after sparks start */
+}
+.intro-name {
+    font-size: var(--fs-display);
+    color: var(--color-accent);
+    opacity: 0;
+    animation: fadeInLogo 1s ease-out 2.5s forwards;
+}
+
+@keyframes fadeInLogo {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Spark styling */
+.spark {
+    position: absolute;
+    background-color: var(--color-accent); /* Spark color */
+    border-radius: 50%;
+    pointer-events: none; /* Sparks should not be interactive */
+    opacity: 0; /* Start invisible, animation will make it appear */
+    transform-origin: center center;
+}
+
+/* Example Spark Animation - A simple outward burst and fade */
+@keyframes sparkBurst {
+    0% {
+        transform: scale(0.5) translate(0, 0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5) translate(var(--tx, 0px), var(--ty, 0px)); /* End position set by JS */
+        opacity: 0;
+    }
+}
+
+/* Class added by JS to trigger animation */
+.spark.animate {
+    animation-name: sparkBurst;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Ease out with a bounce */
+    animation-fill-mode: forwards; /* Stay at the end state (opacity 0) */
+}
+
+/* Styling for main page content to be initially hidden */
+.hidden-initially {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.main-content-visible { /* Class to be added by JS after intro */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in;
+}
+
+/* Dark theme adjustments for intro if needed */
+html[data-theme="dark"] #intro-overlay {
+    background-color: var(--color-background); /* Ensure it matches dark theme bg */
+}
+
+html[data-theme="dark"] .intro-name {
+    color: var(--color-accent); /* Ensure accent color is visible */
+}
+
+html[data-theme="dark"] .spark {
+    background-color: var(--color-accent); /* Spark color for dark theme */
+}

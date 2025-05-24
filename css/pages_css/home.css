@@ -1,0 +1,405 @@
+/* portfolio-project/css/pages_css/home.css */
+
+/* ------------------------- */
+/* ----- HERO SECTION ----- */
+/* ------------------------- */
+.hero-section {
+    min-height: calc(100vh - 70px); /* Full viewport height minus navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-xxl) var(--spacing-md);
+    position: relative; /* For pseudo-elements or absolutely positioned children like scroll indicator */
+    background-color: var(--color-background-alt); /* Fallback background */
+    /* Example: Gradient Background */
+    background-image: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+    /* Example: Image Background (uncomment and provide path if preferred) */
+    /*
+    background-image: url('../../assets/images/hero/hero-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    */
+    color: var(--color-primary-text-on-accent); /* Text color for on top of dark/gradient background */
+}
+
+/* Overlay for image background to improve text readability */
+/* .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay
+    z-index: 1;
+} */
+
+.hero-section .hero-content {
+    position: relative; /* To ensure content is above pseudo-elements like overlay */
+    z-index: 2;
+    max-width: 800px; /* Limit width of hero content */
+}
+
+.hero-title {
+    font-size: var(--fs-display);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+    color: inherit; /* Inherits from .hero-section or can be set specifically */
+}
+
+html[data-theme="dark"] .hero-section .hero-title .highlight-name,
+.hero-section .hero-title .highlight-name {
+    /* Ensure highlight name has good contrast on hero background */
+    /* If hero background is dark/colored, this might need to be lighter */
+    color: #ffffff; /* Or a light accent color */
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.2); */
+}
+
+
+.hero-profession {
+    font-size: var(--fs-xl);
+    font-weight: 400;
+    margin-bottom: var(--spacing-lg);
+    color: inherit;
+    opacity: 0.9;
+}
+
+.hero-intro-text {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--spacing-xl);
+    color: inherit;
+    opacity: 0.85;
+    line-height: 1.7;
+}
+
+.hero-cta-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.hero-cta-button {
+    min-width: 180px; /* Ensure buttons have a decent width */
+}
+
+/* Adjust button colors if default primary/secondary don't fit hero background */
+.hero-section .btn-primary {
+    background-color: #fff; /* Example: White button on dark/gradient hero */
+    color: var(--color-accent); /* Text color matching the accent */
+    border-color: #fff;
+}
+.hero-section .btn-primary:hover,
+.hero-section .btn-primary:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-accent-hover);
+}
+
+.hero-section .btn-secondary {
+    background-color: transparent;
+    color: #fff; /* White text */
+    border-color: #fff; /* White border */
+}
+.hero-section .btn-secondary:hover,
+.hero-section .btn-secondary:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
+}
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-indicator img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(196deg) brightness(104%) contrast(104%); /* Makes SVG white */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+/* ------------------------------------ */
+/* ----- COMMON HOME SECTION STYLES ----- */
+/* ------------------------------------ */
+.home-section-teaser { /* Common class for teaser sections on home page */
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+}
+
+.home-section-teaser.bg-alt {
+    background-color: var(--color-background-alt);
+}
+
+.section-title { /* Styling for H2 titles in sections */
+    font-size: var(--fs-xxxl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+}
+
+.section-title::after { /* Optional: decorative underline for section titles */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-sm) auto 0; /* Centered if text-align: center is on title */
+    border-radius: 2px;
+}
+
+/* ----------------------------- */
+/* ----- ABOUT ME TEASER ----- */
+/* ----------------------------- */
+.about-teaser-content {
+    display: flex;
+    flex-direction: column; /* Stack image and text on small screens */
+    align-items: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.profile-image-teaser {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border: 5px solid var(--color-background-alt); /* Optional border */
+    box-shadow: var(--box-shadow-medium);
+}
+
+html[data-theme="dark"] .profile-image-teaser {
+    border-color: var(--color-background); /* Adjust border for dark theme */
+}
+
+.teaser-text {
+    font-size: var(--fs-lg);
+    line-height: 1.8;
+    text-align: center; /* Center text for teaser */
+    max-width: 700px; /* Limit width of teaser text */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -------------------------------- */
+/* ----- KEY SKILLS HIGHLIGHT ----- */
+/* -------------------------------- */
+.skills-highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.skill-highlight-item {
+    background-color: var(--color-background); /* Card background */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    box-shadow: var(--box-shadow-light);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+html[data-theme="dark"] .skill-highlight-item {
+    background-color: var(--color-background-alt); /* Slightly different card bg for dark */
+}
+
+.skill-highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.skill-icon {
+    width: 60px; /* Adjust icon size */
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    /* Consider filter for dark mode if SVG icons are single color and need inversion */
+    /* html[data-theme="dark"] .skill-icon { filter: invert(1) hue-rotate(180deg); } */
+}
+
+.skill-name { /* h3 inside skill item */
+    font-size: var(--fs-lg);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skill-description { /* p inside skill item */
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* --------------------------------- */
+/* ----- FEATURED PROJECTS ----- */
+/* --------------------------------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for project cards */
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+/* Individual project card styling will be in css/components/cards.css */
+
+
+/* --------------------------------- */
+/* ----- HOME CTA SECTION ----- */
+/* --------------------------------- */
+.home-cta-section {
+    padding: var(--spacing-xxl) var(--spacing-md);
+}
+
+/* If using .bg-alt as in index.html */
+.home-cta-section.bg-alt {
+    background-color: var(--color-background-alt);
+}
+html[data-theme="dark"] .home-cta-section.bg-alt {
+    background-color: var(--color-background); /* Darker shade for CTA section in dark mode */
+}
+
+.cta-text {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+/*
+   The specific (and previously empty) rule blocks for:
+   .home-cta-section .section-title
+   .home-cta-section .section-title::after
+   have been removed. The general .section-title styles will apply.
+   If specific overrides are needed for the CTA section's title, they can be added back here
+   with actual CSS properties.
+*/
+
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES ----- */
+/* ------------------------- */
+
+@media (max-width: 992px) { /* Tablets */
+    .hero-title {
+        font-size: calc(var(--fs-display) * 0.85);
+    }
+    .hero-profession {
+        font-size: calc(var(--fs-xl) * 0.9);
+    }
+    .hero-intro-text {
+        font-size: calc(var(--fs-lg) * 0.95);
+    }
+    .section-title {
+        font-size: calc(var(--fs-xxxl) * 0.9);
+    }
+}
+
+@media (max-width: 768px) { /* Smaller tablets / Large mobiles */
+    .hero-section {
+        min-height: calc(90vh - 60px); /* Adjust height for smaller navbar */
+        padding: var(--spacing-xl) var(--spacing-sm);
+    }
+    .hero-title {
+        font-size: var(--fs-xxxl);
+    }
+    .hero-profession {
+        font-size: var(--fs-lg);
+    }
+    .hero-intro-text {
+        font-size: var(--fs-base);
+    }
+
+    .about-teaser-content {
+        flex-direction: column; /* Ensure it's column */
+        text-align: center;
+    }
+    .profile-image-teaser {
+        width: 150px;
+        height: 150px;
+    }
+    .teaser-text {
+        font-size: var(--fs-base);
+    }
+
+    .skills-highlight-grid {
+        grid-template-columns: 1fr; /* Stack skills on smaller screens */
+        gap: var(--spacing-lg);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack project cards */
+        gap: var(--spacing-lg);
+    }
+
+    .section-title {
+        font-size: var(--fs-xxl);
+    }
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+}
+
+@media (max-width: 480px) { /* Small mobiles */
+    .hero-section {
+        min-height: calc(85vh - 60px);
+    }
+    .hero-title {
+        font-size: var(--fs-xxl);
+    }
+    .hero-profession {
+        font-size: var(--fs-base);
+    }
+    .hero-intro-text {
+        font-size: var(--fs-sm);
+        padding: 0 var(--spacing-xs);
+    }
+    .hero-cta-buttons {
+        flex-direction: column; /* Stack CTA buttons */
+        align-items: center;
+    }
+    .hero-cta-button {
+        width: 100%;
+        max-width: 300px; /* Limit width of stacked buttons */
+    }
+
+    .profile-image-teaser {
+        width: 120px;
+        height: 120px;
+    }
+
+    .scroll-down-indicator img {
+        width: 24px;
+        height: 24px;
+    }
+    .section-title {
+        font-size: var(--fs-xl);
+    }
+}

@@ -1,0 +1,130 @@
+/* portfolio-project/css/pages_css/projects.css */
+
+/* ------------------------- */
+/* -- PAGE TITLE SECTION (reused or customize) --- */
+/* ------------------------- */
+/* Assuming .page-title-section styles from about.css or main.css are sufficient.
+   If specific styling is needed for the projects page title, add it here.
+   Example:
+   .page-title-section {
+       padding-top: var(--spacing-xl);
+       padding-bottom: var(--spacing-xl);
+   }
+*/
+
+/* ------------------------------------ */
+/* ----- PROJECTS PAGE SECTION STYLING ----- */
+/* ------------------------------------ */
+.projects-page-section {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Styles for the main projects grid container if different from home page's featured grid */
+#all-projects-grid {
+    /* The .projects-grid class (defined in home.css or globally) should handle the grid layout.
+       Add specific overrides here if needed for the main projects page. */
+    margin-top: var(--spacing-lg); /* Space above the grid if filters are present or just for padding */
+}
+
+.loading-projects-message { /* Style for the "Loading projects..." text */
+    padding: var(--spacing-xxl) 0; /* Give it some space if it's the only thing visible */
+    font-style: italic;
+}
+
+/* ------------------------- */
+/* ----- PROJECT FILTERS (Optional) ----- */
+/* ------------------------- */
+.project-filters {
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.project-filters .filter-btn {
+    /* Using .btn and .btn-outline styles from buttons.css */
+    padding: var(--spacing-xs) var(--spacing-lg); /* Slightly smaller padding for filter buttons */
+    font-size: var(--fs-sm);
+    text-transform: capitalize; /* e.g., 'frontend' becomes 'Frontend' */
+}
+
+.project-filters .filter-btn.active {
+    background-color: var(--color-accent);
+    color: var(--color-primary-text-on-accent);
+    border-color: var(--color-accent);
+    font-weight: 600;
+}
+
+html[data-theme="dark"] .project-filters .filter-btn.active {
+    color: var(--color-background); /* Adjust text color on accent for dark mode if needed */
+}
+
+
+/* -------------------------------- */
+/* ----- PROJECTS CTA SECTION ----- */
+/* -------------------------------- */
+.projects-cta-section {
+    padding: var(--spacing-xxl) var(--spacing-md);
+    background-color: var(--color-background-alt); /* Or a different accent color */
+    border-top: 1px solid var(--color-border);
+}
+
+html[data-theme="dark"] .projects-cta-section {
+    background-color: var(--color-background); /* Darker for dark mode */
+    border-top-color: var(--color-text-muted);
+}
+
+.projects-cta-section h2 {
+    font-size: var(--fs-xxl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.projects-cta-section p {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+.projects-cta-section .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES ----- */
+/* ------------------------- */
+@media (max-width: 768px) {
+    .projects-cta-section h2 {
+        font-size: var(--fs-xl);
+    }
+    .projects-cta-section p {
+        font-size: var(--fs-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-filters {
+        flex-direction: column; /* Stack filter buttons */
+        align-items: stretch; /* Make buttons full width */
+    }
+    .project-filters .filter-btn {
+        width: 100%;
+        margin-bottom: var(--spacing-xs);
+    }
+    .projects-cta-section .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .projects-cta-section .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

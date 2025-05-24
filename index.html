@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAYANK RANA Portfolio</title>
+    <link rel="stylesheet" href="css/main.css"> <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/intro-animation.css">
+    <link rel="stylesheet" href="css/pages_css/home.css"> <link rel="stylesheet" href="css/themes/dark-mode.css">
+    <link rel="icon" href="assets/images/common/header.ico" type="image/x-icon">
+    <!-- <style>
+        #global-animated-bg {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -10;
+        }
+    </style> -->
+</head>
+<body>
+
+    <div id="global-animated-bg">
+        </div>
+
+    <div class="page-content-container">
+
+        <div id="intro-overlay">
+            <div class="intro-content">
+                </div>
+        </div>
+
+        <div id="main-page-content" class="hidden-initially">
+            <header id="main-header">
+                <nav id="navbar" class="navbar">
+                    <div class="nav-container container">
+                        <a href="index.html" class="nav-logo">
+                            MAYANK RANA
+                        </a>
+                        <ul class="nav-menu" id="nav-menu-items">
+                            <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="pages/about.html" class="nav-link">About</a></li>
+                            <li class="nav-item"><a href="pages/skills.html" class="nav-link">Skills</a></li>
+                            <li class="nav-item"><a href="pages/projects.html" class="nav-link">Projects</a></li>
+                            <li class="nav-item"><a href="pages/resume.html" class="nav-link">Resume</a></li>
+                            <li class="nav-item"><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                        </ul>
+                        <div class="nav-extras">
+                            <button id="theme-toggle-button" class="theme-toggle btn-icon" aria-label="Toggle Light/Dark Mode">
+                                <img src="assets/icons/sun.svg" alt="Light mode" class="icon-sun">
+                                <img src="assets/icons/moon.svg" alt="Dark mode" class="icon-moon" style="display:none;">
+                            </button>
+                            <button class="hamburger btn-icon" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                                <img src="assets/icons/menu-hamburger.svg" alt="Open menu" class="icon-menu">
+                                <img src="assets/icons/close.svg" alt="Close menu" class="icon-close" style="display:none;">
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <section id="hero" class="hero-section"> <div class="hero-content container">
+                        <h1 class="hero-title">
+                            Hello, I'm <span class="highlight-name">MAYANK RANA</span>
+                        </h1>
+                        <p class="hero-profession">Creative Web Developer & Data Analyst</p>
+                        <p class="hero-intro-text">
+                            I craft beautiful, intuitive, and high-performing web experiences.
+                            Passionate about clean code, user-centric design, and continuous learning.
+                        </p>
+                        <div class="hero-cta-buttons">
+                            <a href="pages/projects.html" class="btn btn-primary btn-lg hero-cta-button">View My Work</a>
+                            <a href="pages/contact.html" class="btn btn-secondary btn-lg hero-cta-button">Get In Touch</a>
+                        </div>
+                    </div>
+                    <a href="#about-teaser" class="scroll-down-indicator" aria-label="Scroll to next section">
+                        <img src="assets/icons/arrow-down.svg" alt="Scroll down">
+                    </a>
+                </section>
+
+                <section id="about-teaser" class="home-section-teaser animate-on-scroll" data-animation="fade-in-up">
+                    <div class="container">
+                        <h2 class="section-title text-center">A Little About Me</h2>
+                        <div class="about-teaser-content">
+                            <div class="teaser-image-container"> </div><img src="assets/images/profile/pic1.png" alt="MAYANK RANA" class="profile-image-teaser" onerror="this.src='https://placehold.co/200x200/E0E0E0/757575?text=Your+Photo'; this.onerror=null;">
+                            <p class="teaser-text">
+                                I'm a Web Developer & Data Analyst based in India, with a passion for turning complex problems into elegant digital solutions. I thrive in collaborative environments and I'm always eager to learn new technologies.
+                                My journey in web development started with a fascination for interactive designs.
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <a href="pages/about.html" class="btn btn-outline">Learn More About Me</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills-highlight" class="home-section-teaser bg-alt-home animate-on-scroll" data-animation="fade-in">
+                    <div class="container card-grid-container">
+                        <h2 class="section-title text-center">Key Skills</h2>
+                        <div class="skills-highlight-grid">
+                            <div class="skill-highlight-item animate-on-scroll" data-animation="fade-in-up" data-delay="100" data-color-scheme="1">
+                                <img src="assets/icons/MySQL.svg" alt="MySQL Icon" class="skill-icon" onerror="this.src='https://placehold.co/64x64/E34F26/FFFFFF?text=HTML5'; this.onerror=null;">
+                                <h3 class="skill-name">MySQL</h3>
+                                <p class="skill-description">Optimized data querying and management using MySQL for efficient and reliable analytical insights.</p>
+                            </div>
+                            <div class="skill-highlight-item animate-on-scroll" data-animation="fade-in-up" data-delay="200" data-color-scheme="2">
+                                <img src="assets/icons/PowerBI.svg" alt="PowerBI Icon" class="skill-icon" onerror="this.src='https://placehold.co/64x64/1572B6/FFFFFF?text=CSS3'; this.onerror=null;">
+                                <h3 class="skill-name">Microsoft Power BI</h3>
+                                <p class="skill-description">Interactive data visualization and insightful reporting using MS Power BI for informed decision-making.</p>
+                            </div>
+                            <div class="skill-highlight-item animate-on-scroll" data-animation="fade-in-up" data-delay="300" data-color-scheme="3">
+                                <img src="assets/icons/python.svg" alt="Python Icon" class="skill-icon" onerror="this.src='https://placehold.co/64x64/F7DF1E/000000?text=JS'; this.onerror=null;">
+                                <h3 class="skill-name">Python</h3>
+                                <p class="skill-description">Data analysis and visualization using Python with Pandas, NumPy, and Matplotlib for insightful, data-driven solutions.</p>
+                            </div>
+                            
+                        </div>
+                        <div class="text-center section-cta-button-container">
+                            <a href="pages/skills.html" class="btn btn-outline">View All Skills</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="featured-projects" class="home-section-teaser animate-on-scroll" data-animation="fade-in">
+                    <div class="container card-grid-container">
+                        <h2 class="section-title text-center">Featured Projects</h2>
+                        <div class="projects-grid" id="featured-projects-grid">
+                            <p class="text-center text-muted">Loading projects...</p>
+                        </div>
+                        <div class="text-center section-cta-button-container">
+                            <a href="pages/projects.html" class="btn btn-primary">Explore All Projects</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="home-cta" class="home-section-teaser bg-alt-home animate-on-scroll" data-animation="fade-in-up">
+                    <div class="container text-center">
+                        <h2 class="section-title">Ready to Collaborate?</h2>
+                        
+                        <div class="cta-buttons home-main-cta-buttons">
+                            <a href="pages/contact.html" class="btn btn-primary btn-lg">Send Me a Message</a>
+                            <a href="assets/resume/MAYANK_RANA_Resume.pdf" class="btn btn-outline btn-lg" download="MAYANK_RANA_Resume.pdf">Download My Resume</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer id="main-footer">
+                <div class="footer-container container">
+                    <div class="footer-content">
+                        <p>&copy; <span id="current-year"></span> MAYANK RANA. All Rights Reserved.</p>
+                        <p>Crafted with <span class="heart-icon">&hearts;</span> and pure HTML, CSS, & JavaScript.</p>
+                    </div>
+                    <div class="social-links">
+                         <a href="https://github.com/Mayank-Rajputt" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub">
+                            <img src="assets/icons/github.svg" alt="GitHub" class="social-icon" onerror="this.src='https://placehold.co/24x24/757575/FFFFFF?text=GH'; this.onerror=null;">
+                        </a>
+                        <a href="https://www.linkedin.com/in/mayank-rana9368/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn">
+                            <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="social-icon" onerror="this.src='https://placehold.co/24x24/007BFF/FFFFFF?text=LI'; this.onerror=null;">
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div> </div> <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/data/projects-data.js"></script>
+    <script src="js/projects-loader.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/global-parallax.js"></script> <script src="js/card-interactions.js"></script>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

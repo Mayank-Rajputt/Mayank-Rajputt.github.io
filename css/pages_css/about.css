@@ -1,0 +1,415 @@
+/* portfolio-project/css/pages_css/about.css */
+
+/* ------------------------- */
+/* -- PAGE TITLE SECTION --- */
+/* ------------------------- */
+.page-title-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.page-title-section h1 {
+    font-size: var(--fs-display);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.page-subtitle {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ------------------------- */
+/* --- COMMON ABOUT SECTION STYLING --- */
+/* ------------------------- */
+.about-section {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+}
+
+.about-section .section-title {
+    font-size: var(--fs-xxxl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+    position: relative; /* For ::after pseudo-element */
+}
+.about-section .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
+    /* Animation for underline if using .animate-on-scroll */
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s ease-out 0.2s;
+}
+.animate-on-scroll.visible .about-section .section-title::after,
+.animate-on-scroll.visible .section-title::after { /* More general for other pages too */
+    transform: scaleX(1);
+}
+
+
+/* ------------------------- */
+/* --- DETAILED BIO SECTION (Image Border Focus) --- */
+/* ------------------------- */
+.bio-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.bio-image-container {
+    flex-shrink: 0;
+    max-width: 300px;
+    width: 70%; /* Responsive width, adjust as needed */
+    aspect-ratio: 1 / 1; /* Keep it square for a consistent border effect */
+    position: relative; /* Crucial for pseudo-elements */
+    margin: var(--spacing-lg) auto;
+    border-radius: var(--border-radius-lg); /* Rounded corners for the container & image */
+    padding: 5px; /* Thickness of the "gap" where the border light will appear */
+    perspective: 1000px; /* For 3D effects */
+    /* overflow: hidden; */ /* Allow glow to extend slightly if desired */
+}
+
+/* Animated Border using Pseudo-elements - ON THE BORDER */
+.bio-image-container::before,
+.bio-image-container::after {
+    content: "";
+    position: absolute;
+    top: 0; /* Align with the padding edge */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; /* Match container's rounding */
+    pointer-events: none;
+}
+
+/* Layer 1: The main rotating/pulsing cyan border "light" */
+.bio-image-container::before {
+    z-index: 1; /* Sits on top of ::after, but image will be on top of this */
+    border: 3px solid transparent; /* Track for the gradient, adjust thickness */
+
+    /* Conic gradient for the moving light segment */
+    background: conic-gradient(
+        from var(--border-angle, 0deg), /* CSS variable for JS mouse interaction & CSS animation */
+        transparent 0%,
+        transparent 30%, /* Start of the light segment */
+        #00FFFF 48%,      /* Bright Cyan - main part of the light */
+        #33FFFF 50%,      /* Slightly lighter cyan center of light */
+        #00FFFF 52%,      /* Bright Cyan */
+        transparent 70%, /* End of the light segment */
+        transparent 100%
+    ) border-box; /* Apply gradient to the border area */
+
+    /* Mask to create the border shape (make center transparent) */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, /* Transparent center based on padding */
+        linear-gradient(#fff 0 0);             /* Opaque border area */
+    -webkit-mask-composite: xor; /* Older Safari - cuts out the center */
+            mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: exclude; /* Standard - cuts out the center */
+
+    animation: rotateBorderAngle 8s linear infinite, /* Continuous rotation of the light */
+               blinkBorderBrightness 2.5s ease-in-out infinite alternate; /* Blinking effect */
+    filter: drop-shadow(0 0 3px #00FFFF) brightness(1.2); /* Initial glow & brightness */
+    opacity: 0.85;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Layer 2: A softer, static outer glow for depth and to enhance the border */
+.bio-image-container::after {
+    z-index: 0; /* Behind the main border light */
+    /* Using box-shadow to create a multi-layered glow around the padding area */
+    box-shadow: inset 0 0 8px 2px rgba(0, 255, 255, 0.2), /* Inner subtle glow */
+                0 0 12px 3px rgba(0, 255, 255, 0.3),  /* Main cyan glow */
+                0 0 25px 8px rgba(0, 255, 255, 0.15); /* Softer outer haze */
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+@keyframes rotateBorderAngle {
+    0% { --border-angle: 0deg; }
+    100% { --border-angle: 360deg; }
+}
+
+@keyframes blinkBorderBrightness {
+    0%, 100% { filter: drop-shadow(0 0 2px #00FFFF) brightness(1.0) saturate(120%); opacity: 0.7; }
+    50% { filter: drop-shadow(0 0 6px #33FFFF) brightness(1.6) saturate(180%); opacity: 1; }
+}
+
+.profile-image-large {
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--border-radius-lg) - 0px); /* Slightly less than container if container has padding */
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2; /* Above the border pseudo-elements */
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-style: preserve-3d;
+}
+
+/* Mouse interaction effect on container hover */
+.bio-image-container:hover .profile-image-large {
+    transform: scale(1.02) translateZ(25px) rotateX(var(--image-rotate-x, 0deg)) rotateY(var(--image-rotate-y, 0deg));
+    box-shadow: 0 12px 30px rgba(var(--color-accent-rgb), 0.25);
+}
+
+.bio-image-container:hover::before {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #33FFFF) brightness(2.0) saturate(220%);
+    animation-duration: 4s, 1.2s; /* Faster animations on hover */
+}
+.bio-image-container:hover::after {
+    opacity: 1;
+    box-shadow: inset 0 0 10px 3px rgba(0, 255, 255, 0.3),
+                0 0 18px 5px rgba(0, 255, 255, 0.4),
+                0 0 35px 12px rgba(0, 255, 255, 0.25);
+}
+
+/*html[data-theme="dark"] .profile-image-large {
+     No specific border needed if effect is outside 
+}*/
+/* Cyan should be fine on dark theme for the border effect */
+
+.bio-text-content h2 {
+    font-size: var(--fs-xxl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+}
+.bio-text-content p {
+    font-size: var(--fs-base);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+.bio-text-content strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* --- TIMELINE STYLES (Experience & Education) --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) 0;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--color-border);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+}
+html[data-theme="dark"] .timeline::after {
+    background-color: var(--color-text-muted);
+}
+.timeline-item {
+    padding: var(--spacing-md) 0 var(--spacing-lg) calc(20px + var(--spacing-xl));
+    position: relative;
+    background-color: transparent;
+}
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: calc(var(--spacing-md) + 5px);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    border: 3px solid var(--color-background);
+}
+html[data-theme="dark"] .timeline-icon {
+    border-color: var(--color-background-alt);
+}
+.timeline-icon img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(11deg) brightness(104%) contrast(102%);
+}
+.timeline-content {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
+    position: relative;
+}
+html[data-theme="dark"] .timeline-content {
+    background-color: var(--color-background-alt);
+}
+.timeline-title {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+.timeline-subtitle {
+    font-size: var(--fs-base);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+.timeline-date {
+    display: block;
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+.timeline-details {
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+.timeline-details ul {
+    list-style: disc;
+    padding-left: var(--spacing-lg);
+}
+.timeline-details li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* --- INTERESTS SECTION --- */
+.interests-intro {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+}
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+.interest-item {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+.interest-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--spacing-md);
+    color: var(--color-accent);
+}
+.interest-item p {
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+}
+
+/* --- ABOUT CTA & SOCIAL --- */
+#about-cta h2 {
+    font-size: var(--fs-xxl);
+    margin-bottom: var(--spacing-md);
+}
+#about-cta p {
+    font-size: var(--fs-lg);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+}
+.social-links-about-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+.btn-icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--color-background-alt);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-short);
+}
+.btn-icon-text:hover,
+.btn-icon-text:focus {
+    background-color: var(--color-accent);
+    color: var(--color-primary-text-on-accent);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-light);
+}
+.btn-icon-text img {
+    width: 20px;
+    height: 20px;
+}
+html[data-theme="dark"] .btn-icon-text {
+    background-color: var(--color-background);
+    border-color: var(--color-text-muted);
+}
+html[data-theme="dark"] .btn-icon-text:hover,
+html[data-theme="dark"] .btn-icon-text:focus {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-color: var(--color-accent);
+}
+
+/* ----- MEDIA QUERIES ----- */
+@media (min-width: 769px) {
+    .bio-layout {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+    .bio-image-container {
+        width: 40%;
+        max-width: 320px;
+        margin-right: var(--spacing-xl);
+        margin-left: 0;
+    }
+    .bio-text-content {
+        flex: 1;
+    }
+    .bio-text-content h2 {
+        text-align: left;
+    }
+}
+@media (max-width: 768px) {
+    .about-section .section-title { font-size: var(--fs-xxl); }
+    .page-title-section h1 { font-size: var(--fs-xxxl); }
+    .timeline::after { left: 20px; }
+    .timeline-item { padding-left: calc(20px + var(--spacing-lg)); }
+    .timeline-icon { width: 36px; height: 36px; }
+    .timeline-icon img { width: 18px; height: 18px; }
+    .bio-image-container {
+        width: 60%;
+        max-width: 280px;
+    }
+}
+@media (max-width: 480px) {
+    .page-title-section h1 { font-size: var(--fs-xxl); }
+    .page-subtitle { font-size: var(--fs-base); }
+    .about-section .section-title { font-size: var(--fs-xl); }
+    .bio-text-content h2 { font-size: var(--fs-xl); }
+    .timeline-title { font-size: var(--fs-lg); }
+    .bio-image-container {
+        width: 70%;
+        max-width: 220px;
+    }
+}

@@ -1,0 +1,195 @@
+/* portfolio-project/css/pages_css/resume.css */
+
+/* ------------------------------------ */
+/* ----- COMMON RESUME PAGE SECTION STYLING ----- */
+/* ------------------------------------ */
+.resume-page-section {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+}
+
+.resume-page-section.bg-alt {
+    background-color: var(--color-background-alt);
+}
+
+.resume-page-section .section-title { /* H2 titles within resume sections */
+    font-size: var(--fs-xxxl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+}
+.resume-page-section .section-title::after { /* Optional: decorative underline */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
+}
+
+/* -------------------------------- */
+/* ----- DOWNLOAD RESUME SECTION ----- */
+/* -------------------------------- */
+#download-resume-section h2 {
+    font-size: var(--fs-xxl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+#download-resume-section p {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+.resume-download-button {
+    /* Uses .btn, .btn-primary, .btn-lg from buttons.css */
+    display: inline-flex; /* To align icon and text */
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm); /* Space between icon and text */
+    margin-bottom: var(--spacing-md);
+}
+
+.resume-download-button .btn-icon-left {
+    width: 20px; /* Adjust icon size as needed */
+    height: 20px;
+    /* filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(148deg) brightness(104%) contrast(102%); */
+    /* The above filter makes an icon white, assuming the button is dark. Adjust if needed. */
+    /* If using a white SVG, no filter is needed. */
+}
+
+.resume-alternative {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+}
+.resume-alternative a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+.resume-alternative a:hover {
+    color: var(--color-accent-hover);
+}
+
+/* -------------------------------- */
+/* ----- RESUME SUMMARY SECTION ----- */
+/* -------------------------------- */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: 1000px; /* Limit width of the summary grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+.summary-category {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
+    text-align: center; /* Center icon and title */
+}
+
+html[data-theme="dark"] .summary-category {
+    background-color: var(--color-background-alt);
+     /* border: 1px solid var(--color-border); */ /* Optional */
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--spacing-md);
+    color: var(--color-accent); /* If using font icons or SVGs that inherit color */
+}
+
+.category-title { /* h3 */
+    font-size: var(--fs-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* Align list items to the left within the centered category box */
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+}
+
+.summary-list li {
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px dashed var(--color-border); /* Subtle separator */
+    /* Or use icons: */
+    /* display: flex; */
+    /* align-items: flex-start; */
+}
+.summary-list li:last-child {
+    border-bottom: none;
+}
+
+/* If using icons for list items in summary: */
+/* .summary-list li .list-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--spacing-sm);
+    margin-top: 4px; // Adjust alignment
+    color: var(--color-success);
+} */
+
+html[data-theme="dark"] .summary-list li {
+    border-bottom-color: var(--color-text-muted);
+}
+
+/* -------------------------------- */
+/* ----- FINAL CTA ON RESUME PAGE ----- */
+/* -------------------------------- */
+/* This section can reuse styles from #download-resume-section p, h2 or define its own */
+#resume-summary-section + .resume-page-section h2 { /* Targets the "Interested in Working Together?" h2 */
+    font-size: var(--fs-xxl);
+    margin-bottom: var(--spacing-sm);
+}
+#resume-summary-section + .resume-page-section p {
+    font-size: var(--fs-lg);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES ----- */
+/* ------------------------- */
+@media (max-width: 768px) {
+    .resume-page-section .section-title,
+    #download-resume-section h2,
+    #resume-summary-section + .resume-page-section h2 {
+        font-size: var(--fs-xl);
+    }
+    #download-resume-section p,
+    #resume-summary-section + .resume-page-section p {
+        font-size: var(--fs-base);
+    }
+    .summary-grid {
+        grid-template-columns: 1fr; /* Stack summary categories */
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-download-button {
+        font-size: var(--fs-base); /* Adjust button text size */
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    .resume-download-button .btn-icon-left {
+        width: 18px;
+        height: 18px;
+    }
+    .category-title {
+        font-size: var(--fs-lg);
+    }
+}

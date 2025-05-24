@@ -1,0 +1,300 @@
+/* portfolio-project/css/main.css */
+
+/* ------------------------- */
+/* ----- CSS RESET ----- */
+/* ------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: var(--color-background); /* Fallback, global BG will cover this */
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    position: relative; /* For stacking context with global background */
+}
+
+/* --------------------------------- */
+/* ----- GLOBAL ANIMATED BACKGROUND (Colorful & Interactive) ----- */
+/* --------------------------------- */
+#global-animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    overflow: hidden;
+    background-color: var(--color-global-bg-base); /* Base color */
+    perspective: 800px; /* Add perspective for 3D transforms on pseudo-elements */
+}
+
+#global-animated-bg::before,
+#global-animated-bg::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease-out, background-position 0.1s linear; /* Smooth transform for JS */
+    will-change: transform, opacity, background-position; /* Performance hint */
+}
+
+/* Layer 1: Main colorful, mouse-reactive "Aurora" or "Liquid Light" gradient */
+#global-animated-bg::before {
+    top: -50%; /* Make it much larger than viewport */
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* background-position is controlled by JS via --mouse-x-bg-percent and --mouse-y-bg-percent */
+    background: radial-gradient(
+        circle at var(--mouse-x-bg-percent, 50%) var(--mouse-y-bg-percent, 50%),
+        var(--color-global-bg-accent1) 0%,
+        var(--color-global-bg-accent2) 20%, /* Adjusted stop for smoother blend */
+        var(--color-global-bg-accent3) 40%,
+        var(--color-global-bg-accent4) 60%,
+        var(--color-global-bg-base) 80% /* Blend into base at a larger radius */
+    );
+    opacity: var(--global-bg-opacity1);
+    animation: globalBgFlow 25s ease-in-out infinite alternate; /* Slow, flowing animation */
+    z-index: -9;
+    /* transform: translateZ(-200px) scale(1.5); */ /* Optional: Push back and scale for depth */
+}
+
+/* Layer 2: Subtle dynamic lines or particles moving at a different parallax */
+#global-animated-bg::after {
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image:
+        repeating-linear-gradient(
+            calc(var(--mouse-angle-bg, 45deg) + 0deg), /* Angle reacts to mouse */
+            rgba(var(--color-global-lines-rgb), 0) 0%,
+            rgba(var(--color-global-lines-rgb), var(--global-lines-opacity, 0.07)) 50%, /* Slightly more visible lines */
+            rgba(var(--color-global-lines-rgb), 0) 100%
+        ),
+        repeating-linear-gradient(
+            calc(var(--mouse-angle-bg, 45deg) + 90deg), /* Perpendicular lines */
+            rgba(var(--color-global-lines-rgb), 0) 0%,
+            rgba(var(--color-global-lines-rgb), var(--global-lines-opacity, 0.07)) 50%,
+            rgba(var(--color-global-lines-rgb), 0) 100%
+        );
+    background-size: 2px 250px, 250px 2px; /* Thinner, longer lines */
+    opacity: var(--global-bg-opacity2);
+    animation: moveLines 45s linear infinite;
+    z-index: -8;
+    transform: translate(var(--parallax-x-after, 0px), var(--parallax-y-after, 0px)) scale(1.1); /* Parallax controlled by JS */
+}
+
+@keyframes globalBgFlow {
+    0% { filter: hue-rotate(0deg) saturate(100%); opacity: calc(var(--global-bg-opacity1) * 0.7); transform: scale(1.0) rotate(0deg); }
+    25% { filter: hue-rotate(20deg) saturate(120%); transform: scale(1.03) rotate(3deg); }
+    50% { opacity: var(--global-bg-opacity1); filter: hue-rotate(45deg) saturate(150%); }
+    75% { filter: hue-rotate(20deg) saturate(120%); transform: scale(1.03) rotate(-3deg); }
+    100% { filter: hue-rotate(0deg) saturate(100%); opacity: calc(var(--global-bg-opacity1) * 0.7); transform: scale(1.0) rotate(0deg); }
+}
+
+@keyframes moveLines {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 250px 250px; } /* Match background-size for seamless loop */
+}
+
+
+/* Wrapper for actual page content */
+.page-content-container {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.page-content-container > main {
+    flex-grow: 1;
+}
+
+/* --------------------------------- */
+/* ----- CSS CUSTOM PROPERTIES (VARIABLES) ----- */
+/* --------------------------------- */
+:root {
+    /* Typography */
+    --font-primary: 'Helvetica Neue', Arial, sans-serif;
+    --font-secondary: 'Georgia', serif;
+    --font-monospace: 'Courier New', monospace;
+
+    /* Base Font Sizes */
+    --fs-base: 1rem; --fs-sm: 0.875rem; --fs-lg: 1.125rem; --fs-xl: 1.5rem; --fs-xxl: 2rem; --fs-xxxl: 2.5rem; --fs-display: 3rem;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem; --spacing-sm: 0.5rem; --spacing-md: 1rem; --spacing-lg: 1.5rem; --spacing-xl: 2rem; --spacing-xxl: 3rem; --spacing-section: 4rem;
+
+    /* Borders & Shadows */
+    --border-radius-sm: 4px; --border-radius-md: 8px; --border-radius-lg: 16px;
+    --box-shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --box-shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+    --box-shadow-dark: 0 6px 12px rgba(0,0,0,0.2);
+
+    /* Transitions */
+    --transition-short: 0.2s ease-in-out; --transition-medium: 0.3s ease-in-out; --transition-long: 0.5s ease-in-out;
+
+    /* Light Theme Colors (Default) - Enhanced for vibrancy */
+    --color-background: #ffffff;
+    --color-background-rgb: 255, 255, 255;
+    --color-background-alt: #f0f4f8; /* Lighter, cooler alt */
+    --color-background-alt-rgb: 240, 244, 248;
+    --color-text-primary: #1a202c; /* Darker text for high contrast */
+    --color-text-primary-rgb: 26,32,44;
+    --color-text-secondary: #4a5568;
+    --color-text-muted: #718096;
+    --color-text-muted-rgb: 113,128,150;
+    --color-border: #cbd5e0; /* Slightly darker border */
+    --color-border-rgb: 203,213,224;
+    --color-primary-text-on-accent: #ffffff;
+
+    /* Main Accent Colors (Light Theme) */
+    --color-accent: #3b82f6;            /* Vivid Blue */
+    --color-accent-rgb: 59, 130, 246;
+    --color-accent-hover: #2563eb;      /* Darker Blue */
+    --color-accent-secondary: #64748b;  /* Slate Grey */
+    --color-accent-secondary-rgb: 100, 116, 140;
+
+    /* Additional Accent Colors for Cards - Light Theme */
+    --color-card-accent-1: #ec4899;     /* Vibrant Pink */
+    --color-card-accent-1-rgb: 236, 72, 153;
+    --color-card-accent-2: #f97316;     /* Vibrant Orange */
+    --color-card-accent-2-rgb: 249, 115, 22;
+    --color-card-accent-3: #10b981;     /* Emerald Green */
+    --color-card-accent-3-rgb: 16, 185, 129;
+    --color-card-accent-4: #8b5cf6;     /* Vibrant Purple */
+    --color-card-accent-4-rgb: 139, 92, 246;
+    --color-card-accent-5: #06b6d4;     /* Vibrant Cyan */
+    --color-card-accent-5-rgb: 6, 182, 212;
+    --color-card-accent-cyan: #00BFFF;    /* Deep Sky Blue - For light blue effects */
+    --color-card-accent-cyan-rgb: 0, 191, 255;
+
+    /* Semantic Colors (Light Theme) */
+    --color-success: #22c55e; --color-success-rgb: 34,197,94;
+    --color-warning: #f59e0b; --color-danger: #ef4444; --color-danger-rgb: 239,68,68;
+
+    /* Global Background Specific Colors (Light Theme) - NEW ABSTRACT */
+    --color-global-bg-base: #e0f7fa; /* Light Cyanish Base */
+    --color-global-bg-accent1: #38bdf8; /* Sky Blue */
+    --color-global-bg-accent2: #a78bfa; /* Light Purple */
+    --color-global-bg-accent3: #f472b6; /* Pink */
+    --color-global-bg-accent4: #facc15; /* Yellow */
+    --color-global-lines-rgb: 100,116,140; /* Slate for lines */
+    --global-lines-opacity: 0.08;
+    --global-bg-opacity1: 0.65; /* Opacity of the main color gradient layer */
+    --global-bg-opacity2: 0.25; /* Opacity of the lines layer */
+
+    /* Card Specific Variables (Light Theme) */
+    --color-card-bg-rgb: 255,255,255; --color-card-border-rgb: 226,232,240;
+    --color-card-shadow-rgb: 45,55,72;
+
+    /* Z-index values */
+    --z-index-dropdown: 900; --z-index-navbar: 1000; --z-index-modal: 1100;
+    --z-index-tooltip: 1200; --z-index-intro-overlay: 1300;
+}
+
+html[data-theme="dark"] {
+    --color-background: #0f172a; --color-background-rgb: 15,23,42;
+    --color-background-alt: #1e293b; --color-background-alt-rgb: 30,41,59;
+    --color-text-primary: #e2e8f0; --color-text-primary-rgb: 226,232,240;
+    --color-text-secondary: #94a3b8; --color-text-muted: #64748b; --color-text-muted-rgb: 100,116,140;
+    --color-border: #334155; --color-border-rgb: 51,65,85;
+
+    /* Main Accent Colors - Dark Theme */
+    --color-accent: #38bdf8; --color-accent-rgb: 56,189,248;
+    --color-accent-hover: #0ea5e9; --color-accent-secondary: #64748b; --color-accent-secondary-rgb: 100,116,140;
+
+    /* Additional Accent Colors for Cards - Dark Theme */
+    --color-card-accent-1: #f472b6; --color-card-accent-1-rgb: 244,114,182;
+    --color-card-accent-2: #fb923c; --color-card-accent-2-rgb: 251,146,60;
+    --color-card-accent-3: #2dd4bf; --color-card-accent-3-rgb: 45,212,191;
+    --color-card-accent-4: #a78bfa; --color-card-accent-4-rgb: 167,139,250;
+    --color-card-accent-5: #facc15; --color-card-accent-5-rgb: 250,204,21;
+    --color-card-accent-cyan: #40E0D0; --color-card-accent-cyan-rgb: 64,224,208;
+
+    /* Global Background Specific Colors (Dark Theme) - NEW ABSTRACT */
+    --color-global-bg-base: #02040a; /* Very Dark Navy/Almost Black */
+    --color-global-bg-accent1: #1e40af; /* Deep Blue */
+    --color-global-bg-accent2: #7e22ce; /* Vibrant Purple */
+    --color-global-bg-accent3: #065f46; /* Darker Emerald/Forest */
+    --color-global-bg-accent4: #9f1239; /* Deep Crimson */
+    --color-global-lines-rgb: 100,116,140; /* Muted lines for dark theme */
+    --global-lines-opacity: 0.06;
+    --global-bg-opacity1: 0.6;
+    --global-bg-opacity2: 0.15;
+
+    /* Card Specific Variables (Dark Theme) */
+    --color-card-bg-rgb: 30,41,59; --color-card-border-rgb: 74,85,104;
+    --color-card-shadow-rgb: 0,0,0;
+}
+
+/* ------------------------- */
+/* ----- GLOBAL STYLES ----- */
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+input, button, textarea, select { font: inherit; border: none; outline: none; }
+button { cursor: pointer; background-color: transparent; color: inherit; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: var(--color-accent); transition: color var(--transition-short); }
+a:hover, a:focus { color: var(--color-accent-hover); }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-secondary); color: var(--color-text-primary); line-height: 1.2; margin-bottom: var(--spacing-md); font-weight: 600; }
+h1{font-size:var(--fs-display);} h2{font-size:var(--fs-xxxl);} h3{font-size:var(--fs-xxl);} h4{font-size:var(--fs-xl);} h5{font-size:var(--fs-lg);} h6{font-size:var(--fs-base);}
+p { margin-bottom: var(--spacing-md); color: var(--color-text-secondary); font-size: var(--fs-base); }
+.container { width: 100%; max-width: 1140px; margin-left: auto; margin-right: auto; padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+section {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    position: relative;
+    z-index: 1;
+}
+.bg-alt {
+    background-color: rgba(var(--color-background-alt-rgb), 0.9);
+}
+html[data-theme="dark"] .bg-alt {
+    background-color: rgba(var(--color-background-alt-rgb), 0.92);
+}
+.text-center { text-align: center; } .text-primary { color: var(--color-accent); }
+.text-secondary { color: var(--color-text-secondary); } .text-muted { color: var(--color-text-muted); }
+.highlight-name { color: var(--color-accent); font-weight: 700; }
+.heart-icon { color: var(--color-danger); display: inline-block; }
+
+/* ------------------------- */
+/* ----- FOOTER STYLES ----- */
+#main-footer { background-color: var(--color-background-alt); color: var(--color-text-muted); text-align: center; padding: var(--spacing-lg) 0; border-top: 1px solid var(--color-border); position: relative; z-index: 2; }
+#main-footer .footer-container { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-sm); }
+#main-footer .social-links { display: flex; gap: var(--spacing-md); margin-top: var(--spacing-sm); }
+#main-footer .social-icon { width: 24px; height: 24px; transition: transform var(--transition-short); }
+#main-footer .social-icon:hover { transform: scale(1.1); }
+
+/* -------------------------------- */
+/* ----- ACCESSIBILITY HELPERS ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+*:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb),0.3); }
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES for Global Adjustments ----- */
+@media (max-width: 768px) { :root{--fs-base:0.9375rem;--fs-lg:1.0625rem;--fs-xl:1.375rem;--fs-xxl:1.75rem;--fs-xxxl:2.25rem;--fs-display:2.75rem;--spacing-section:3rem;} .container{padding-left:var(--spacing-md);padding-right:var(--spacing-md);} }
+@media (max-width: 480px) { :root{--fs-base:0.875rem;--fs-lg:1rem;--fs-xl:1.25rem;--fs-xxl:1.5rem;--fs-xxxl:1.875rem;--fs-display:2.25rem;--spacing-section:2.5rem;} }
+
+/* Animation styles for .animate-on-scroll */
+.animate-on-scroll { opacity:0; transition:opacity .7s ease-out,transform .7s ease-out; transform:translateY(30px); }
+.animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+.animate-on-scroll.fade-in { transform:translateY(0); }
+.animate-on-scroll.fade-in-up { transform:translateY(50px); }
+.animate-on-scroll.fade-in-left { transform:translateX(-50px); }
+.animate-on-scroll.fade-in-left.visible { transform:translateX(0); }
+.animate-on-scroll.fade-in-right { transform:translateX(50px); }
+.animate-on-scroll.fade-in-right.visible { transform:translateX(0); }
+.animate-on-scroll.scale-up { transform:scale(.9); }
+.animate-on-scroll.scale-up.visible { transform:scale(1); }

@@ -1,0 +1,16 @@
+
+html[data-theme="dark"] {
+  
+    --color-background: #1a1a1a;         /* Main dark background */
+    --color-background-alt: #2c2c2c;   /* Slightly lighter dark for alternate sections, cards */
+    --color-text-primary: #e0e0e0;     /* Primary light text color */
+    --color-text-secondary: #b0b0b0;   /* Secondary light text color */
+    --color-text-muted: #888888;       /* Muted light text color */
+    --color-border: #444444;           /* Darker border color */
+
+    --color-accent: #00aaff;           /* A brighter or different accent for dark mode (e.g., lighter blue) */
+    --color-accent-hover: #0077cc;     /* Hover state for the dark mode accent */
+    --color-accent-secondary: #89939d; /* Secondary accent for dark mode */
+    
+}
+

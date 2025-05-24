@@ -1,0 +1,227 @@
+/* portfolio-project/css/components/navbar.css */
+
+/* ------------------------- */
+/* ----- NAVIGATION BAR ----- */
+/* ------------------------- */
+#main-header {
+    position: sticky; /* Makes the header sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-index-navbar);
+    background-color: var(--color-background); /* Initial background */
+    box-shadow: var(--box-shadow-light);
+    transition: background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+/* Style for when navbar becomes sticky and scrolled (can be added via JS) */
+#main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    box-shadow: var(--box-shadow-medium);
+}
+
+html[data-theme="dark"] #main-header.scrolled {
+    background-color: rgba(26, 26, 26, 0.9); /* Slightly transparent dark */
+}
+
+
+.navbar .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px; /* Standard navbar height */
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+}
+
+/* Logo Styling */
+.nav-logo {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-logo img {
+    max-height: 40px; /* Adjust if using an image logo */
+    display: block;
+}
+
+/* Navigation Menu Items */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-left: var(--spacing-lg); /* Space between nav items */
+}
+
+.nav-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--fs-base);
+    font-weight: 500;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: color var(--transition-short), background-color var(--transition-short);
+    position: relative; /* For active indicator */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-accent);
+    background-color: rgba(0, 0, 0, 0.03); /* Subtle hover background */
+}
+
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .nav-link:focus {
+    color: var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* Optional: Add an underline or other indicator for active link */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Adjust position of underline */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Width of the underline */
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+}
+
+
+/* Navigation Extras: Theme Toggle and Hamburger */
+.nav-extras {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm); /* Space between theme toggle and hamburger */
+}
+
+.theme-toggle,
+.hamburger {
+    /* Using .btn-icon styles from buttons.css */
+    display: flex; /* Ensure icons inside are centered if needed */
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle img,
+.hamburger img {
+    width: 22px; /* Adjust icon size */
+    height: 22px;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+    display: none; /* Hidden by default, shown in media query */
+    z-index: calc(var(--z-index-navbar) + 1); /* Ensure it's above nav menu on mobile */
+}
+
+.hamburger .icon-menu,
+.hamburger .icon-close {
+    transition: transform 0.3s ease-in-out;
+}
+
+/*
+   The .nav-menu.active styles for mobile are defined within the media query below.
+   The empty rule block that was here previously has been removed.
+*/
+
+.hamburger.active .icon-menu {
+    display: none;
+}
+.hamburger.active .icon-close {
+    display: block !important; /* Override inline style from HTML */
+}
+
+
+/* ------------------------- */
+/* ----- MEDIA QUERIES ----- */
+/* ------------------------- */
+
+/* Tablet and smaller (e.g., up to 768px) */
+@media (max-width: 768px) {
+    .navbar .nav-container {
+        height: 60px; /* Slightly smaller navbar on mobile */
+    }
+
+    .nav-menu {
+        display: none; /* Hide desktop menu */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Position below navbar */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-background);
+        box-shadow: var(--box-shadow-medium);
+        padding: var(--spacing-md) 0;
+        border-top: 1px solid var(--color-border);
+        /* Animation for sliding in/out - JS will toggle 'active' class */
+        transform: translateY(-10px); /* Start slightly above for slide-down effect */
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
+        z-index: calc(var(--z-index-navbar) - 1); /* Below hamburger but above content */
+    }
+
+    .nav-menu.active { /* Styles for when mobile menu is open (toggled by JS) */
+        display: flex; /* Show mobile menu */
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block; /* Make links take full width */
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-bottom: 1px solid var(--color-border); /* Separator for mobile links */
+    }
+    .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .nav-link.active::after { /* Adjust active indicator for mobile */
+        bottom: 5px;
+        width: 30px;
+        height: 3px;
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .nav-extras {
+        gap: var(--spacing-xs); /* Reduce gap on mobile for nav extras */
+    }
+}
+
+/* Smaller mobile devices (e.g., up to 480px) */
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: var(--fs-lg); /* Slightly smaller logo */
+    }
+    .theme-toggle img,
+    .hamburger img {
+        width: 20px;
+        height: 20px;
+    }
+}

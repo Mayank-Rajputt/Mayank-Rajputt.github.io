@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Your Name</title> <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/buttons.css">
+    <link rel="stylesheet" href="../css/components/forms.css"> <link rel="stylesheet" href="../css/pages_css/contact.css">
+
+    <link rel="stylesheet" href="../css/themes/dark-mode.css">
+
+    <link rel="icon" href="../assets/images/common/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <body class="contact-page-body">
+    <header id="main-header">
+        <nav id="navbar" class="navbar">
+            <div class="nav-container container">
+                <a href="../index.html" class="nav-logo">
+                    MAYANK RANA
+                </a>
+                <ul class="nav-menu" id="nav-menu-items">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> </ul>
+                <div class="nav-extras">
+                    <button id="theme-toggle-button" class="theme-toggle btn-icon" aria-label="Toggle Light/Dark Mode">
+                        <img src="../assets/icons/sun.svg" alt="Light mode" class="icon-sun">
+                        <img src="../assets/icons/moon.svg" alt="Dark mode" class="icon-moon" style="display:none;">
+                    </button>
+                    <button class="hamburger btn-icon" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <img src="../assets/icons/menu-hamburger.svg" alt="Open menu" class="icon-menu">
+                        <img src="../assets/icons/close.svg" alt="Close menu" class="icon-close" style="display:none;">
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="contact-main-content">
+        <section class="page-title-section bg-alt">
+            <div class="container text-center">
+                <h1>Get In Touch</h1>
+                <p class="page-subtitle">I'd love to hear from you! Whether you have a question, a project idea, or just want to say hello.</p>
+            </div>
+        </section>
+
+        <section id="contact-details-form" class="contact-page-section">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-info-column">
+                        <h2>Contact Information</h2>
+                        <p>
+                            Feel free to reach out through the form, or connect with me directly via email or social media.
+                            I aim to respond to all inquiries within 24-48 hours.
+                        </p>
+                        <ul class="contact-details-list">
+                            <li>
+                                <img src="../assets/icons/mail.svg" alt="Email Icon" class="contact-icon" onerror="this.src='https://placehold.co/24x24/757575/FFFFFF?text=M'; this.onerror=null;">
+                                <span><strong>Email:</strong> <a href="mailto:mayankrajputana9@gmail.com">Mayank Rana</a></span>
+                            </li>
+                            <li>
+                                <img src="../assets/icons/phone.svg" alt="Phone Icon" class="contact-icon" onerror="this.src='https://placehold.co/24x24/007BFF/FFFFFF?text=P'; this.onerror=null;">
+                                <span><strong>Phone:</strong> <a href="tel:+91 9368230902">+91 936823902</a></span>
+                            </li>
+                            <li>
+                                <img src="../assets/icons/map-pin.svg" alt="Location Icon" class="contact-icon" onerror="this.src='https://placehold.co/24x24/28A745/FFFFFF?text=L'; this.onerror=null;">
+                                <span><strong>Location:</strong> Meerut, Uttar Pradesh, India</span>
+                            </li>
+                        </ul>
+                        <h3>Follow Me:</h3>
+                        <div class="social-links-contact-page">
+                            <a href="https://github.com/Mayank-Rajputt" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="GitHub">
+                                <img src="../assets/icons/github.svg" alt="GitHub" onerror="this.src='https://placehold.co/32x32/757575/FFFFFF?text=GH'; this.onerror=null;">
+                            </a>
+                            <a href="https://www.linkedin.com/in/mayank-rana9368/" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="LinkedIn">
+                                <img src="../assets/icons/linkedin.svg" alt="LinkedIn" onerror="this.src='https://placehold.co/32x32/007BFF/FFFFFF?text=LI'; this.onerror=null;">
+                            </a>
+                            <!-- <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="Twitter">
+                                <img src="../assets/icons/twitter.svg" alt="Twitter">
+                            </a> -->
+                        </div>
+                    </div>
+
+                    <div class="contact-form-column">
+                        <h2>Send Me a Message</h2>
+                        <form id="contact-form" novalidate>
+                            <div id="form-status-message" class="form-status" role="alert"></div>
+
+                            <div class="form-group">
+                                <label for="form-name" class="form-label">Full Name</label>
+                                <input type="text" id="form-name" name="name" class="form-control" placeholder="Enter Name" required>
+                                </div>
+
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">Email Address</label>
+                                <input type="email" id="form-email" name="email" class="form-control" placeholder="Enter Email Address" required>
+                                </div>
+
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label">Subject (Optional)</label>
+                                <input type="text" id="form-subject" name="subject" class="form-control" placeholder="What's your doubt.">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label">Your Message</label>
+                                <textarea id="form-message" name="message" class="form-control" rows="6" placeholder="Write your message here..." required></textarea>
+                                </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg submit-button">
+                                <img src="../assets/icons/send.svg" alt="Send Icon" class="btn-icon-left" onerror="this.style.display='none';">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-container container">
+            <div class="footer-content">
+                <p>&copy; <span id="current-year"></span> MAYANK RANA. All Rights Reserved.</p>
+                <p>Crafted with <span class="heart-icon">&hearts;</span> and pure HTML, CSS, & JavaScript.</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Mayank-Rajputt" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub">
+                    <img src="../assets/icons/github.svg" alt="GitHub" class="social-icon" onerror="this.src='https://placehold.co/24x24/757575/FFFFFF?text=GH'; this.onerror=null;">
+                </a>
+                <a href="https://www.linkedin.com/in/mayank-rana9368/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn">
+                    <img src="../assets/icons/linkedin.svg" alt="LinkedIn" class="social-icon" onerror="this.src='https://placehold.co/24x24/007BFF/FFFFFF?text=LI'; this.onerror=null;">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/form-validator.js"></script> <script>
+        // Inline script for dynamic year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

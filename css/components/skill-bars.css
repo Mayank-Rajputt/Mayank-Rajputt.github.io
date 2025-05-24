@@ -1,0 +1,70 @@
+/* portfolio-project/css/components/skill-bars.css */
+
+/* ------------------------- */
+/* ----- SKILL BAR CONTAINER ----- */
+/* ------------------------- */
+.skill-bar-container {
+    width: 100%; /* Full width of its parent (.skill-item) */
+    background-color: var(--color-background-alt); /* Light background for the track */
+    border-radius: var(--border-radius-sm); /* Rounded corners for the track */
+    height: 20px; /* Height of the skill bar track */
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    overflow: hidden; /* Ensures the inner bar respects the container's border-radius */
+    border: 1px solid var(--color-border); /* Subtle border for the container */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+}
+
+html[data-theme="dark"] .skill-bar-container {
+    background-color: var(--color-background); /* Darker track for dark mode */
+    border-color: var(--color-text-muted);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------------- */
+/* ----- SKILL BAR (FILLED PART) ----- */
+/* ------------------------- */
+.skill-bar {
+    height: 100%; /* Full height of the container */
+    width: 0; /* Initial width, will be set by JS or CSS animation based on data-skill-level */
+    background-color: var(--color-accent); /* Main color for the filled bar */
+    border-radius: var(--border-radius-sm); /* Match container's radius */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns text to the right end of the bar if any */
+    color: var(--color-primary-text-on-accent); /* Text color on the bar */
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    padding-right: var(--spacing-sm); /* Padding for text inside the bar, if any */
+    transition: width 1s ease-out; /* Smooth animation for the width change */
+}
+
+/*
+   Further Customization Notes (Informational Comments):
+
+   1. Displaying Percentage Text:
+      To show text like "90%" on the bar, you could:
+      a) Add a <span> inside the .skill-bar HTML and style it.
+      b) Use a ::after pseudo-element on .skill-bar:
+         .skill-bar::after {
+             content: attr(data-skill-level) '%'; // Assumes data-skill-level is on .skill-bar
+             // Add styling for position, color, etc.
+         }
+
+   2. Bar Pattern/Gradient:
+      For a more dynamic look, a subtle gradient or pattern can be applied:
+      .skill-bar {
+          // ... other styles
+          background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+          background-size: 40px 40px;
+      }
+
+   3. Category-Specific Bar Colors:
+      If you want different colors for different skill categories (e.g., frontend, backend):
+      - Add modifier classes to your .skill-bar elements in HTML (e.g., <div class="skill-bar frontend" ...>).
+      - Define styles for these modifiers:
+        .skill-bar.frontend { background-color: #3498db; } // Example blue
+        .skill-bar.backend  { background-color: #2ecc71; } // Example green
+        .skill-bar.tool     { background-color: #f1c40f; } // Example yellow
+      Ensure these colors are also defined as CSS variables if you want them themeable.
+*/
