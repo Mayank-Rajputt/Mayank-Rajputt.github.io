@@ -11,21 +11,36 @@
     <link rel="stylesheet" href="../css/themes/dark-mode.css">
     <link rel="icon" href="../assets/images/common/favicon.ico" type="image/x-icon">
 
-        <style>
-        /* Add these styles to your ../css/pages_css/resume.css or a general components CSS file */
+     <style>
+        /* Styles for the PDF viewer and error messages */
         .resume-viewer-container {
-            background-color: #fff; /* Or your light theme card background */
-            padding: 1rem; /* Or 10px 15px etc. */
-            border-radius: 8px; /* Or your standard border-radius */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Example shadow */
-            max-width: 800px; /* Or your preferred max-width */
-            margin: 2rem auto; /* Centering and spacing */
-            aspect-ratio: 8.5 / 11; /* Standard A4 paper aspect ratio */
+            background-color: #fff;
+            padding: 0.5rem; /* Slightly reduced padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Take 90% of parent width, good for mobile */
+            max-width: 800px; /* Capped at 800px for larger screens */
+            margin: 2rem auto; /* Centering */
+            aspect-ratio: 8.5 / 11; /* Attempt to maintain A4 aspect ratio */
             overflow: hidden; /* Ensures iframe stays within bounds */
+            position: relative; /* Needed for potential absolute positioning of children if any */
+            /* Fallback height for mobile if aspect-ratio isn't perfectly supported or content is too small */
+            min-height: 500px; /* Adjust as needed, ensures space for the iframe */
+        }
+
+        @media (max-width: 639px) { /* Targeting smaller mobile screens */
+            .resume-viewer-container {
+                width: 95%; /* Use more width on very small screens */
+                padding: 0.25rem;
+                min-height: 60vh; /* Use viewport height percentage */
+                /* If aspect-ratio causes issues on very small screens, you might override it: */
+                /* aspect-ratio: auto; */
+                /* height: 60vh; */
+            }
         }
 
         html[data-theme="dark"] .resume-viewer-container {
-            background-color: #2d3748; /* Example dark theme card background (adjust to your dark theme) */
+            background-color: #2d3748; /* Example dark theme card background */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
@@ -33,22 +48,41 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 4px; }
+            display: block; /* Ensures it behaves like a block element */
+        }
 
         .pdf-fallback-message {
             text-align: center;
             padding: 2rem;
-            color: #555; 
+            color: #555;
         }
         html[data-theme="dark"] .pdf-fallback-message {
-            color: #bbb; 
+            color: #bbb;
         }
         .pdf-fallback-message a {
-            color: #007bff; 
+            color: #007bff; /* Your primary link color */
             text-decoration: underline;
         }
         html[data-theme="dark"] .pdf-fallback-message a {
-            color: #60a5fa;
+            color: #60a5fa; /* Example dark theme link color */
+        }
+
+        /* Basic styles for form error messages - you can customize these in your forms.css */
+        .form-group .error-message {
+            display: none; /* Hidden by default */
+            color: red;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+        .form-control.is-invalid {
+            border-color: red;
+        }
+        /* Styles for form status message */
+        #form-status-message.success { color: green; }
+        #form-status-message.error { color: red; }
+
+        .icon-sun, .icon-moon {
+            /* display: inline-block; /* Or block, depending on your layout */
         }
     </style>
 </head>
