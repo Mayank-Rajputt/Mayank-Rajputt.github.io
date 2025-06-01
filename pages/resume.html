@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"> <head>
+<html lang="en" data-theme="light">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Resume - MAYANK RANA</title>
@@ -9,7 +10,8 @@
     <link rel="stylesheet" href="../css/pages_css/resume.css">
     <link rel="stylesheet" href="../css/themes/dark-mode.css">
     <link rel="icon" href="../assets/images/common/favicon.ico" type="image/x-icon">
-    <style>
+
+        <style>
         /* Add these styles to your ../css/pages_css/resume.css or a general components CSS file */
         .resume-viewer-container {
             background-color: #fff; /* Or your light theme card background */
@@ -31,28 +33,26 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 4px; /* Optional: if you want iframe itself to have rounded corners */
-        }
+            border-radius: 4px; }
 
         .pdf-fallback-message {
             text-align: center;
             padding: 2rem;
-            color: #555; /* Adjust color as needed */
+            color: #555; 
         }
         html[data-theme="dark"] .pdf-fallback-message {
-            color: #bbb; /* Adjust color for dark theme */
+            color: #bbb; 
         }
         .pdf-fallback-message a {
-            color: #007bff; /* Or your primary link color */
+            color: #007bff; 
             text-decoration: underline;
         }
         html[data-theme="dark"] .pdf-fallback-message a {
-            color: #60a5fa; /* Example dark theme link color */
+            color: #60a5fa;
         }
     </style>
 </head>
-<body class="resume-page-body">
-    <div id="global-animated-bg"></div>
+<body class="resume-page-body"> <div id="global-animated-bg"></div>
 
     <div class="page-content-container">
         <header id="main-header">
@@ -66,7 +66,8 @@
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
                         <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
-                        <li class="nav-item"><a href="resume.html" class="nav-link current">Resume</a></li> <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
                     <div class="nav-extras">
                         <button id="theme-toggle-button" class="theme-toggle btn-icon" aria-label="Toggle Light/Dark Mode">
@@ -83,8 +84,7 @@
         </header>
 
         <main>
-            <section class="page-title-section bg-alt-resume animate-on-scroll" data-animation="fade-in">
-                <div class="container text-center">
+            <section class="page-title-section bg-alt-resume animate-on-scroll" data-animation="fade-in"> <div class="container text-center">
                     <h1>My Resume</h1>
                     <p class="page-subtitle">Download my full resume or review a summary of my qualifications below.</p>
                 </div>
@@ -126,8 +126,8 @@
                     </p>
                 </div>
             </section>
-            <section id="resume-summary-section" class="resume-page-section bg-alt-resume animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.4s;">
-                <div class="container">
+
+            <section id="resume-summary-section" class="resume-page-section bg-alt-resume animate-on-scroll" data-animation="fade-in-up"> <div class="container">
                     <h2 class="section-title text-center">Qualifications Summary</h2>
                     <div class="summary-grid">
                         <div class="summary-category">
@@ -141,6 +141,7 @@
                                 <li>AI Prompting</li>
                             </ul>
                         </div>
+
                         <div class="summary-category">
                             <img src="../assets/icons/graduation-cap.svg" alt="Education Icon" class="summary-icon" onerror="this.src='https://placehold.co/48x48/007BFF/FFFFFF?text=E'; this.onerror=null;">
                             <h3 class="category-title">Education</h3>
@@ -150,18 +151,18 @@
                                 <li>High School(10th) - K.S. Inter College, Kuralsi, Muzaffarnagar </li>
                             </ul>
                         </div>
-                         <div class="summary-category">
-                            <img src="../assets/icons/briefcase.svg" alt="Experience Icon" class="summary-icon" onerror="this.src='https://placehold.co/48x48/28A745/FFFFFF?text=Exp'; this.onerror=null;">
+                         <div class="summary-category"> <img src="../assets/icons/briefcase.svg" alt="Experience Icon" class="summary-icon" onerror="this.src='https://placehold.co/48x48/28A745/FFFFFF?text=Exp'; this.onerror=null;">
                             <h3 class="category-title">Experience</h3>
                             <ul class="summary-list">
+                               
                                 <li>Motivated fresher with a passion to learn and grow.</li>
-                            </ul>
+                                </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="resume-page-section text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.6s;">
+            <section class="resume-page-section text-center animate-on-scroll" data-animation="fade-in-up">
                 <div class="container">
                     <h2>Interested in Working Together?</h2>
                     <p>I'm always excited to explore new opportunities and challenges. If my profile aligns with your needs, I'd love to hear from you!</p>
@@ -186,76 +187,12 @@
                 </div>
             </div>
         </footer>
-    </div>
-
-    <script src="../js/app.js"></script> <script src="../js/navigation.js"></script> <script src="../js/animations.js"></script> <script>
-        // Ensure current year is updated
-        const currentYearElement = document.getElementById('current-year');
-        if (currentYearElement) {
-            currentYearElement.textContent = new Date().getFullYear();
-        }
-
-        // Ensure theme toggle and navigation scripts are correctly initialized
-        // If app.js or navigation.js handle these, ensure they are working
-        // The theme toggle from the contact page example:
-        const themeToggleButton = document.getElementById('theme-toggle-button');
-        const sunIcon = document.querySelector('#theme-toggle-button .icon-sun');
-        const moonIcon = document.querySelector('#theme-toggle-button .icon-moon');
-        const htmlElement = document.documentElement;
-
-        function applyTheme(theme) {
-            htmlElement.setAttribute('data-theme', theme);
-            if (sunIcon && moonIcon) {
-                if (theme === 'dark') {
-                    sunIcon.style.display = 'none';
-                    moonIcon.style.display = 'inline-block';
-                } else {
-                    sunIcon.style.display = 'inline-block';
-                    moonIcon.style.display = 'none';
-                }
-            }
-            localStorage.setItem('theme', theme);
-        }
-
-        if (themeToggleButton) {
-            themeToggleButton.addEventListener('click', function() {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                applyTheme(newTheme);
-            });
-        }
-
-        // Initialize theme on page load
-        const storedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (storedTheme) {
-            applyTheme(storedTheme);
-        } else if (systemPrefersDark) {
-            applyTheme('dark');
-        } else {
-            applyTheme('light'); // Default to light
-        }
-
-        // Hamburger Menu Logic (ensure this is consistent with your navigation.js)
-        const hamburgerButton = document.getElementById('hamburger-menu');
-        const navMenuItems = document.getElementById('nav-menu-items');
-        const menuIcon = document.querySelector('#hamburger-menu .icon-menu');
-        const closeIcon = document.querySelector('#hamburger-menu .icon-close');
-
-        if (hamburgerButton && navMenuItems && menuIcon && closeIcon) {
-            hamburgerButton.addEventListener('click', function() {
-                const isExpanded = navMenuItems.classList.toggle('active'); // Assuming 'active' class shows the menu
-                hamburgerButton.setAttribute('aria-expanded', isExpanded);
-                if (isExpanded) {
-                    menuIcon.style.display = 'none';
-                    closeIcon.style.display = 'inline-block';
-                } else {
-                    menuIcon.style.display = 'inline-block';
-                    closeIcon.style.display = 'none';
-                }
-            });
-        }
+    </div> <script src="../js/app.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/global-parallax.js"></script> <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+
 </body>
 </html>
