@@ -188,8 +188,8 @@ body {
     /* Global Background Specific Colors (Light Theme) - NEW ABSTRACT */
     --color-global-bg-base: #e0f7fa; /* Light Cyanish Base */
     --color-global-bg-accent1: #38bdf8; /* Sky Blue */
-    --color-global-bg-accent2: #a78bfa; /* Light Purple */
-    --color-global-bg-accent3: #22d3ee; /* Pink */
+    --color-global-bg-accent2: #f4c430;
+    --color-global-bg-accent3: #22d3ee; 
     --color-global-bg-accent4: #facc15; /* Yellow */
     --color-global-lines-rgb: 100,116,140; /* Slate for lines */
     --global-lines-opacity: 0.08;
