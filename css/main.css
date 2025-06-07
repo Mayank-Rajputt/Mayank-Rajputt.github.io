@@ -59,7 +59,7 @@ body {
     height: 200%;
     /* background-position is controlled by JS via --mouse-x-bg-percent and --mouse-y-bg-percent */
     background: radial-gradient(
-        circle at var(--mouse-x-bg-percent, 50%) var(--mouse-y-bg-percent, 50%),
+        circle at var(--mouse-x-bg-percent, 90%) var(--mouse-y-bg-percent, 50%),
         var(--color-global-bg-accent1) 0%,
         var(--color-global-bg-accent2) 20%, /* Adjusted stop for smoother blend */
         var(--color-global-bg-accent3) 40%,
