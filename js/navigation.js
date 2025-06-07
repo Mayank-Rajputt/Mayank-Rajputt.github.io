@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Optional: Close mobile menu when a nav link is clicked
         // Useful for SPAs or if sections are on the same page, less so for multi-page
-        // navMenu.querySelectorAll('.nav-link').forEach(link => {
-        //     link.addEventListener('click', () => {
-        //         if (navMenu.classList.contains('active')) {
-        //             navMenu.classList.remove('active');
-        //             hamburgerMenuButton.classList.remove('active');
-        //             hamburgerMenuButton.setAttribute('aria-expanded', 'false');
-        //             menuIcon.style.display = 'block';
-        //             closeIcon.style.display = 'none';
-        //         }
-        //     });
-        // });
+         navMenu.querySelectorAll('.nav-link').forEach(link => {
+             link.addEventListener('click', () => {
+                 if (navMenu.classList.contains('active')) {
+                     navMenu.classList.remove('active');
+                     hamburgerMenuButton.classList.remove('active');
+                     hamburgerMenuButton.setAttribute('aria-expanded', 'false');
+                     menuIcon.style.display = 'block';
+                     closeIcon.style.display = 'none';
+                 }
+             });
+         });
 
     } else {
         if (!hamburgerMenuButton) console.warn('Hamburger menu button not found.');
