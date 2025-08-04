@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayank Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-theme">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">MAYANK RANA</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="projects.html" class="nav__link">Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="contact.html" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <!-- Close Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
+                </div>
+            </div>
+
+            <!-- Theme toggle and mobile menu toggle -->
+            <div class="nav__actions">
+                <div class="theme-toggle" id="theme-toggle">
+                    <div class="theme-toggle__thumb">
+                        <span class="theme-toggle__icon theme-toggle__icon--light">L</span>
+                        <span class="theme-toggle__icon theme-toggle__icon--dark">D</span>
+                    </div>
+                </div>
+                <div class="nav__toggle" id="nav-toggle">
+                     <!-- Menu Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/></svg>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero section" id="hero">
+            <div class="hero__container container grid">
+                <div class="hero__content">
+                    <span class="hero__subtitle">Hello, I'm</span>
+                    <h1 class="hero__title">
+                        Mayank Rana
+                        <span class="hero__title-line"></span>
+                        <span class="hero__title-line"></span>
+                    </h1>
+                    <p class="hero__description">
+                        "Detail-oriented Data Analyst skilled in SQL, Power BI, Python, and AI prompting, focused on transforming complex data into actionable insights and enhancing user experiences through intelligent automation.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="assets/resume/Mayank Rana Resumee.pdf" download class="blob-btn">
+                            Download CV
+                            <span class="blob-btn__inner">
+                                <span class="blob-btn__blobs">
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="about.html" class="blob-btn">
+                            About Me
+                            <span class="blob-btn__inner">
+                                <span class="blob-btn__blobs">
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero__image-wrapper">
+                    <img src="\assets\images\picture11.png" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x500/2C3A4F/FFFFFF?text=Image+Not+Found';"
+                         alt="Mayank Rana Portrait" class="hero__image">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS PREVIEW ==================== -->
+        <section class="skills-preview section">
+            <div class="skills-preview__container container">
+                <h2 class="section__title">Core Technologies</h2>
+                <div class="skills-preview__grid">
+                    <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">SQL</h3>
+                    </div>
+                    <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">Power BI</h3>
+                    </div>
+                    <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">Pyhton - Data Science</h3>
+                    </div>
+                     <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">Data Visualization</h3>
+                    </div>
+                     <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">Data Manipulation</h3>
+                    </div>
+                     <div class="skills-preview__item">
+                        <h3 class="skills-preview__title">AI Prompting</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==================== PROJECTS PREVIEW ==================== -->
+        <section class="projects-preview section" id="projects">
+            <h2 class="section__title">Featured Projects</h2>
+            <div class="projects-preview__container container grid">
+                <!-- Project Card 1 -->
+                <article class="project-card">
+                    <div class="project-card__image">
+                        <img src="\assets\images\Dashboard.png" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/2C3A4F/FFFFFF?text=Image+Not+Found';"
+                             alt="Project 1 Thumbnail">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">IPL Analysis Dashboard</h3>
+                        <p class="project-card__description">Developed a comprehensive IPL dashboard analyzing 17 seasons (2008–2025) of the Indian Premier League.
+Cleaned and structured raw match, player, and team datasets using Power Query.</p>
+                        <a href="projects.html" class="btn btn-white btn-animated">View More</a>
+                    </div>
+                </article>
+                <!-- Project Card 2 -->
+                <article class="project-card">
+                    <div class="project-card__image">
+                        <img src="\assets\images\projectt1.png" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/2C3A4F/FFFFFF?text=Image+Not+Found';"
+                             alt="Project 2 Thumbnail">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Car Price Prediction - Data Preprocessing & Exploration</h3>
+                        <p class="project-card__description">This project is focused on data preprocessing and exploratory analysis for a car price prediction dataset. It includes techniques to handle missing values, perform encoding, and prepare the data for machine learning tasks.</p>
+                         <a href="projects.html" class="btn btn-white btn-animated">View More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==================== LIVE RESUME ==================== -->
+        <section class="resume-viewer section">
+            <h2 class="section__title">Live Resume</h2>
+            <div class="resume-viewer__container container">
+                <iframe class="resume-viewer__iframe" src="assets/resume/Mayank Rana Resumee.pdf"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <h1 class="footer__title">Mayank Rana</h1>
+            <ul class="footer__list">
+                <li><a href="about.html" class="footer__link">About</a></li>
+                <li><a href="projects.html" class="footer__link">Projects</a></li>
+            </ul>
+            <ul class="footer__social">
+                <a href="https://github.com/Mayank-Rajputt" target="_blank" class="footer__social-link">
+                    <!-- Github Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.58 9.58 0 0 1 5 0c1.912-1.3 2.75-1.026 2.75-1.026.55 1.375.2 2.4.1 2.65.637.7 1.025 1.6 1.025 2.688 0 3.837-2.337 4.687-4.562 4.937.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/mayank-rana9368/" target="_blank" class="footer__social-link">
+                    <!-- LinkedIn Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 0 0 0-3.36c-.92 0-1.68.76-1.68 1.68 0 .93.76 1.68 1.68 1.68zm-1.39 9.94h2.79V9.9h-2.79v8.6z"/></svg>
+                </a>
+            </ul>
+            <span class="footer__copy">&#169; Mayank Rana. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- SVG Goo Filter for Blob Buttons -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
