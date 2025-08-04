@@ -222,6 +222,7 @@ img {
     padding: 4rem 2rem;
     transition: right .4s ease-in-out;
     box-shadow: -2px 0 4px hsla(0, 0%, 15%, .1);
+    background-image: none; /* Remove gradient from menu */
   }
   .dark-theme .nav__menu {
       background-color: var(--body-color-dark); /* Solid background for dark theme */
