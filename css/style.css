@@ -87,6 +87,7 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   transition: background 0.5s, color 0.4s;
+   overflow-x: hidden;
 }
 
 body.light-theme {
@@ -1195,5 +1196,6 @@ textarea.contact__input {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
