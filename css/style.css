@@ -1,18 +1,8 @@
-/*=============== GOOGLE FONTS ===============*/
-/* Imported in HTML */
 
-/*=============== CSS VARIABLES ===============*/
 :root {
   --header-height: 3.5rem;
 
-  /*========== Colors ==========*/
-  /* NEW Light Theme Colors - Gradient & Glassmorphism
-    - Background: Gradient (from quiz app)
-    - Card/Surface: hsla(240, 40%, 98%, 0.6) - Semi-transparent white
-    - Text: hsl(240, 20%, 15%) - Deep Indigo
-    - Primary: hsl(220, 80%, 60%) - Bright Blue
-    - Accent: hsl(300, 80%, 70%) - Vibrant Pink/Purple
-  */
+ 
   --first-color-light: hsl(220, 80%, 60%);
   --accent-color-light: hsl(300, 80%, 60%);
   --title-color-light: hsl(240, 20%, 15%);
@@ -21,13 +11,7 @@
   --container-color-light: hsla(240, 40%, 98%, 0.5);
   --border-color-light: hsla(240, 20%, 15%, 0.2);
 
-  /* NEW Dark Theme Colors - Deep Space Gradient
-    - Background: Gradient (from quiz app)
-    - Card/Surface: hsla(260, 25%, 22%, 0.5) - Semi-transparent plum
-    - Text: hsl(260, 15%, 85%) - Soft Lavender
-    - Primary: hsl(45, 100%, 65%) - Gold/Yellow
-    - Accent: hsl(16, 100%, 70%) - Bright Coral
-  */
+  
   --first-color-dark: hsl(45, 100%, 65%);
   --accent-color-dark: hsl(16, 100%, 70%);
   --title-color-dark: hsl(180, 20%, 95%);
@@ -512,7 +496,7 @@ img {
 
 .hero__description {
   margin-bottom: var(--mb-2);
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .hero__buttons {
@@ -1211,4 +1195,5 @@ textarea.contact__input {
     opacity: 1;
     transform: translateY(0);
 }
+
 
