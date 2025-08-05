@@ -520,6 +520,7 @@ img {
   justify-content: center;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .hero__image-wrapper {
@@ -1210,3 +1211,4 @@ textarea.contact__input {
     opacity: 1;
     transform: translateY(0);
 }
+
