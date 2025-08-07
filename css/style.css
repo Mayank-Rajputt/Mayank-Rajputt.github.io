@@ -199,7 +199,9 @@ img {
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
-    background-color: var(--body-color-light); /* Solid background for light theme */
+    background-color: var(--container-color); /* Solid background for light theme */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     top: 0;
     right: -100%;
     width: 80%;
@@ -207,7 +209,8 @@ img {
     padding: 4rem 2rem;
     transition: right .4s ease-in-out;
     box-shadow: -2px 0 4px hsla(0, 0%, 15%, .1);
-    background-image: none; /* Remove gradient from menu */
+    z-index: var(--z-fixed);
+    transform: translateZ(0);
   }
   .dark-theme .nav__menu {
       background-color: var(--body-color-dark); /* Solid background for dark theme */
@@ -1196,6 +1199,7 @@ textarea.contact__input {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
 
